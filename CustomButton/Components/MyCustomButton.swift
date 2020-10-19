@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum ButtonConfiguration {
+enum ButtonStyle {
     case primary
     case secondary
 
@@ -88,39 +88,39 @@ final class MyCustomButton: UIButton {
         }
     }
 
-    var configuration: ButtonConfiguration {
+    var style: ButtonStyle {
         didSet {
-            apply(configuration: configuration)
+            apply(style: style)
         }
     }
 
-    init(configuration: ButtonConfiguration = .primary) {
-        self.configuration = configuration
+    init(style: ButtonStyle = .primary) {
+        self.style = style
         super.init(frame: .zero)
-        apply(configuration: configuration)
+        apply(style: style)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func apply(configuration: ButtonConfiguration) {
-        titleLabel?.font = configuration.font
-        setTitleColor(configuration.enabledTextColor, for: .normal)
-        setTitleColor(configuration.disabledTextColor, for: .disabled)
+    private func apply(style: ButtonStyle) {
+        titleLabel?.font = style.font
+        setTitleColor(style.enabledTextColor, for: .normal)
+        setTitleColor(style.disabledTextColor, for: .disabled)
 
-        layer.borderWidth = configuration.borderWidth
-        layer.borderColor = configuration.borderColor.cgColor
-        layer.cornerRadius = configuration.cornerRadius
+        layer.borderWidth = style.borderWidth
+        layer.borderColor = style.borderColor.cgColor
+        layer.cornerRadius = style.cornerRadius
 
         updateBackground()
     }
 
     private func updateBackground() {
         if isEnabled {
-            backgroundColor = configuration.enabledBackgroundColor
+            backgroundColor = style.enabledBackgroundColor
         } else {
-            backgroundColor = configuration.disabledBackgroundColor
+            backgroundColor = style.disabledBackgroundColor
         }
     }
 }

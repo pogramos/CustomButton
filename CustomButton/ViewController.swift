@@ -10,8 +10,8 @@ import UIKit
 import SwiftUI
 
 final class ViewController: UIViewController {
-    var primary = MyCustomButton(configuration: .primary)
-    var secondary = MyCustomButton(configuration: .secondary)
+    var primary = MyCustomButton(style: .primary)
+    var secondary = MyCustomButton(style: .secondary)
 
     override func viewDidLoad() {
         super.viewDidLoad()
